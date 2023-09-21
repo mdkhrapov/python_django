@@ -5,6 +5,7 @@ from django.db import models
 class Product(models.Model):
     class Meta:
         ordering = ["name", "price"]
+        # verbose_name_plural = "products"
 
     name = models.CharField(max_length=100)
     description = models.TextField(null=False, blank=True)
@@ -13,7 +14,7 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     archived = models.BooleanField(default=False)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Product(pk={self.pk}, name={self.name!r})"
 
 
