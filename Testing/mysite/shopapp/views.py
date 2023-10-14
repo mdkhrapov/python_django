@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.models import Group
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, JsonResponse
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from .models import Product, Order
 from .forms import GroupForm
@@ -24,7 +24,6 @@ class ShopIndexView(View):
             }
         return render(request, 'shopapp/shop-index.html', context=context)
 
-
 class GroupsListView(View):
     def get(self, request: HttpRequest) -> HttpResponse:
         context = {
@@ -38,61 +37,6 @@ class GroupsListView(View):
         if form.is_valid():
             form.save()
         return redirect(request.path)
-
-class ProductDetailsView(DetailView):
-    template_name = 'shopapp/products-detail.html'
-    model = Product
-    context_object_name = "product"
-
-class ProductsListView(ListView):
-    template_name = 'shopapp/products-list.html'
-    # model = Product
-    context_object_name = "products"
-    queryset = Product.objects.filter(archived=False)
-
-#class ProductCreateView(UserPassesTestMixin, CreateView):
-# class ProductCreateView(PermissionRequiredMixin, CreateView):
-class ProductCreateView(CreateView):
-    model = Product
-    fields = "name", "price", "description", "discount"
-    success_url = reverse_lazy('shopapp:products_list')
-    # permission_required = "shopapp.create_product"
-
-    # def test_func(self):
-    #     #return self.request.user.groups.filter(name="secret-group").exists()
-    #     return self.request.user.is_superuser
-
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        return super().form_valid(form)
-
-class ProductUpdateView(UserPassesTestMixin, PermissionRequiredMixin, UpdateView):
-    model = Product
-    fields = "name", "price", "description", "discount"
-    template_name_suffix = "_update_form"
-    permission_required = "shopapp.change_product"
-
-    def test_func(self):
-        obj = self.get_object()
-        if obj.created_by_id == self.request.user.pk or self.request.user.is_superuser:
-            return True
-        return False
-
-    def get_success_url(self):
-        return reverse(
-            "shopapp:product_details",
-            kwargs={"pk":self.object.pk}
-        )
-
-class ProductDeleteView(DeleteView):
-    model = Product
-    success_url = reverse_lazy('shopapp:products_list')
-
-    def form_valid(self, form):
-        success_url = self.get_success_url()
-        self.object.archived = True
-        self.object.save()
-        return HttpResponseRedirect(success_url)
 
 class OrdersListView(LoginRequiredMixin, ListView):
     # permission_required = "view_order"
@@ -135,17 +79,22 @@ class OrderDeleteView(DeleteView):
         self.object.delete()
         return HttpResponseRedirect(success_url)
 
-class ProductsDataExportView(View):
-    def get(self, request: HttpRequest) -> JsonResponse:
 
-        products = Product.objects.order_by("pk").all()
-        products_data = [
+class OrderDataExportView(UserPassesTestMixin, View):
+    def test_func(self):
+        return self.request.user.is_staff
+
+    def get(self, request: HttpRequest) -> JsonResponse:
+        orders = Order.objects.order_by("pk").all()
+        orders_data = [
             {
-                "pk": product.pk,
-                "name": product.name,
-                "price": product.price,
-                "archived": product.archived,
+                "pk": orders.pk,
+                "delivery_address": order.delivery_address,
+                "promocode": order.promocode,
+                "created_at": order.created_at,
+                "user": order.user,
+                "products": order.products,
             }
-            for product in products
+            for order in orders
         ]
-        return JsonResponse({"products": products_data})
+        return JsonResponse({"orders": orders_data})

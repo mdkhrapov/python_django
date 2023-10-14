@@ -1,15 +1,118 @@
 [
   {
-    "fields": {
-      "archived": true,
-      "created_at": "2023-08-11T11:04:57.358Z",
-      "description": "",
-      "discount": 0,
-      "name": "Laptop",
-      "price": "1999.00"
-    },
+    "model": "auth.user",
     "pk": 1,
-    "model": "shopapp.product"
+    "fields": {
+      "password": "pbkdf2_sha256$600000$h5TsUkCJbSiUzuK14TgioR$S53WXztSCAc8pgzBw1+7SNIOxSFlB/dk8nFzhR0N4OI=",
+      "last_login": "2023-10-12T11:58:54.889Z",
+      "is_superuser": true,
+      "username": "mike",
+      "first_name": "Mikhail",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-08-08T15:22:58Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$g0fhUYQAEiAZDwyhGyODI0$Dsv/PElXRecbv/vAQH6EtLYiIOouUsUOlQ7oxBHwVtw=",
+      "last_login": "2023-10-02T16:35:28.720Z",
+      "is_superuser": false,
+      "username": "sam",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-09-29T11:10:10Z",
+      "groups": [],
+      "user_permissions": [
+        25,
+        26,
+        28
+      ]
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$cyhiXskLr72I96dqZfkeaD$EZpigGwWliA9TOrlqnTw8ptJnSafTuHs/fhrrd+eIS0=",
+      "last_login": "2023-09-29T14:09:01.986Z",
+      "is_superuser": false,
+      "username": "john",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-09-29T11:24:15Z",
+      "groups": [],
+      "user_permissions": [
+        32
+      ]
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$5wLVcEj7vRZBBXzT6BYzyw$gMleZ50hUJPTB5JSU9BHsrRdAeL6GYQWJ7bF2Dh9/V0=",
+      "last_login": "2023-10-02T15:06:07.347Z",
+      "is_superuser": false,
+      "username": "nick",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-09-29T11:59:28Z",
+      "groups": [
+        4
+      ],
+      "user_permissions": [
+        4,
+        25,
+        26,
+        28
+      ]
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$Wc4nQBBlZCLYycRHnCGi41$rslKPuNPxyq/wGcauadl+1K6QK1y5EywtAS6XctBjBk=",
+      "last_login": "2023-09-29T12:39:32.625Z",
+      "is_superuser": false,
+      "username": "dominik",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-09-29T12:39:32.321Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 1,
+    "fields": {
+      "name": "Laptop",
+      "description": "",
+      "price": "1999.00",
+      "discount": 0,
+      "created_at": "2023-08-11T11:04:57.358Z",
+      "archived": true
+    }
   },
   {
     "model": "shopapp.product",
