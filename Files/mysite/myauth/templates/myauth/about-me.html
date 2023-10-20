@@ -1,20 +1,35 @@
 {% extends 'myauth/base.html' %}
 
 {% block title %}
-  About me
-{% endblock %}
-
+    About me
+{% endblock title %}
 
 {% block body %}
-  <h1>User info</h1>
-  {% if user.is_authenticated %}
-    <h2>Detail</h2>
-    <p>Username: {{ user.username }}</p>
-    <p>First name: {{ user.first_name }}</p>
-    <p>Last name: {{ user.last_name }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>Bio: {{ user.profile.bio }}</p>
-  {% else %}
-    <h2>User is anonymous</h2>
-  {% endif %}
-{% endblock %}
+    <h1>User Info</h1>
+    {% if user.is_authenticated %}
+        <h2>Details:</h2>
+        <p>Username: {{ user.username }}</p>
+        <p>First name: {{ user.first_name }}</p>
+        <p>Last name: {{ user.last_name }}</p>
+        <p>Reg date: {{ user.date_joined }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Bio: {{ user.profile.bio }}</p>
+        <p>Agreement_accepted: {{ user.profile.agreement_accepted }}</p>
+        {% if user.profile.avatar %}
+            <img src="{{ user.profile.avatar.url }}" alt="profile avatar">
+            <p>Avatar: {{ user.profile.avatar }}</p>
+        {% else %}
+            <p>Avatar: No avatar </p>
+        {% endif %}
+        <div>
+            <a href="{% url 'myauth:profiles_list' %}">Profiles list</a>
+        </div>
+        <div>
+            <a href="{% url 'myauth:profile_update' pk=user.profile.pk %}">Update profile</a>
+        </div>
+    {% else %}
+        <h2>User is anonymous</h2>
+    {% endif %}
+
+
+{% endblock body %}

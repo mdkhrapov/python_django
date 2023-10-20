@@ -16,10 +16,17 @@ from django.forms import ModelForm
 #         )]
 #     )
 
+class MultipleFileInput(forms.ClearableFileInput):
+    allow_multiple_selected = True
+
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = "name", "price", "description", "discount"
+        fields = "name", "price", "description", "discount", "preview"
+
+    images = forms.ImageField(
+        widget=MultipleFileInput(),
+    )
 
 class OrderForm(forms.ModelForm):
     class Meta:

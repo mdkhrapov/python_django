@@ -1,13 +1,16 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Product, Order
+from .models import Product, Order, ProductImage
 from django.http import HttpRequest
 from django.db.models import QuerySet
 from .admin_mixins import ExportAsCSVMixin
 
 class OrderInline(admin.TabularInline):
     model = Product.orders.through
+
+class ProductInLine(admin.StackedInline):
+    model = ProductImage
 
 @admin.action(description="Archive products")
 def mark_archived(modeladmin: admin.ModelAdmin, request: HttpRequest, queryset: QuerySet):
@@ -20,13 +23,14 @@ def mark_unarchived(modeladmin: admin.ModelAdmin, request: HttpRequest, queryset
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin, ExportAsCSVMixin):
     actions = [ mark_archived, mark_unarchived, "export_csv", ]
-    inlines = [ OrderInline, ]
+    inlines = [ OrderInline, ProductInLine ]
     list_display = "pk", "name", "description_short", "price", "discount", "archived"
     list_display_links = "pk", "name"
     ordering = "-name", "pk"
     search_fields = "name", "description"
     fieldsets = [(None, { "fields":("name", "description")}),
                  ("Price options", {"fields": ("price", "discount"),"classes": ("wide", "collapse"),}),
+                 ("Images", {"fields": ("preview",), }),
                  ("Extra options", {"fields": ("archived",), "classes":("collapse",),
                                     "description": "Extra options. Field 'archived' for soft delete" }),
                  ]
@@ -52,3 +56,4 @@ class OrderAdmin(admin.ModelAdmin):
 
     def user_verbose(self, obj:Order) -> str:
         return obj.user.first_name or obj.user.username
+

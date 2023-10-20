@@ -14,6 +14,19 @@
         <p>Reg date: {{ user.date_joined }}</p>
         <p>Email: {{ user.email }}</p>
         <p>Bio: {{ user.profile.bio }}</p>
+        <p>Agreement_accepted: {{ user.profile.agreement_accepted }}</p>
+        {% if user.profile.avatar %}
+            <img src="{{ user.profile.avatar.url }}" alt="profile avatar">
+            <p>Avatar: {{ user.profile.avatar }}</p>
+        {% else %}
+            <p>Avatar: No avatar </p>
+        {% endif %}
+        <div>
+            <a href="{% url 'myauth:profiles_list' %}">Profiles list</a>
+        </div>
+        <div>
+            <a href="{% url 'myauth:profile_update' pk=user.profile.pk %}">Update profile</a>
+        </div>
     {% else %}
         <h2>User is anonymous</h2>
     {% endif %}

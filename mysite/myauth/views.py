@@ -1,11 +1,14 @@
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LogoutView
-from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render, redirect
+from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse, reverse_lazy
+from django.views import View
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
 from django.views.generic import TemplateView, CreateView
+from .forms import ProfileEditForm
 from .models import Profile
 
 
@@ -71,3 +74,36 @@ def set_session_view(request: HttpRequest) -> HttpResponse:
 def get_session_view(request: HttpRequest) -> HttpResponse:
     value = request.session.get("key", "default session value")
     return HttpResponse(f"Session value: {value}")
+
+class FooBarView(View):
+    def get(self, request: HttpRequest) -> JsonResponse:
+        return JsonResponse({"foo":"bar", "spam":"eggs"})
+
+
+class ProfileDetailsView(DetailView):
+    template_name = 'myauth/profile_detail.html'
+    queryset = Profile.objects.all()
+    context_object_name = "profile"
+
+
+class ProfilesListView(ListView):
+    template_name = 'myauth/profiles_list.html'
+    queryset = Profile.objects.all()
+    context_object_name = "profiles"
+
+class ProfileUpdateView(UserPassesTestMixin, UpdateView):
+    # model = Profile
+    template_name = "myauth/profile_update_form.html"
+    queryset = Profile.objects.all()
+    context_object_name = "profile"
+    form_class = ProfileEditForm
+
+    def test_func(self):
+        if self.request.user.id == self.get_object().user.profile.user_id or self.request.user.is_staff:
+            return True
+        return False
+
+    def get_success_url(self):
+        return reverse(
+            "myauth:profiles_list"
+        )
