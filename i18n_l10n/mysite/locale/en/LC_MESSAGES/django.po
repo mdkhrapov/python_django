@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-26 13:11+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: mysite/settings.py:128
+msgid "English"
+msgstr ""
+
+#: mysite/settings.py:129
+msgid "Russian"
+msgstr ""
+
+#: shopapp/models.py:16 shopapp/templates/shopapp/products-details.html:6
+#: shopapp/templates/shopapp/products-details.html:10
+msgid "Product"
+msgstr ""
+
+#: shopapp/models.py:46
+msgid "Order"
+msgstr ""
+
+#: shopapp/templates/shopapp/products-details.html:12
+msgid "Description"
+msgstr ""
+
+#: shopapp/templates/shopapp/products-details.html:13
+msgid "Price"
+msgstr ""
+
+#: shopapp/templates/shopapp/products-details.html:14
+msgid "Discount"
+msgstr ""
+
+#: shopapp/templates/shopapp/products-details.html:15
+msgid "Archived"
+msgstr ""
+
+#: shopapp/templates/shopapp/products-details.html:21
+msgid "Images"
+msgstr ""
+
+#: shopapp/templates/shopapp/products-details.html:23
+#, python-format
+msgid ""
+"\n"
+"        There is only one image.\n"
+"        "
+msgid_plural ""
+"\n"
+"        There are %(images_count)s images.\n"
+"      "
+msgstr[0] ""
+msgstr[1] ""
+
+#: shopapp/templates/shopapp/products-details.html:34
+msgid "No images uploaded yet"
+msgstr ""
+
+#: shopapp/templates/shopapp/products-details.html:43
+#, python-format
+msgid ""
+"\n"
+"    <div>\n"
+"      <a href=\"%(upd_url)s\">Update product</a>\n"
+"    </div>\n"
+"    <div>\n"
+"      <a href=\"%(del_url)s\">Archive product</a>\n"
+"    </div>\n"
+"    <div>\n"
+"      <a href=\"%(prod_list_url)s\">Back to products list</a>\n"
+"    </div>\n"
+"  "
+msgstr ""

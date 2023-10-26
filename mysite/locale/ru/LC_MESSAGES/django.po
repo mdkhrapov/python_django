@@ -1,0 +1,111 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-25 14:24+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: myauth/views.py:21
+#, python-brace-format
+msgid "one product"
+msgid_plural "{count} products"
+msgstr[0] "{count} товар"
+msgstr[1] "{count} товара"
+msgstr[2] "{count} товаров"
+msgstr[3] ""
+
+#: myauth/views.py:26
+msgid "welcome hello world"
+msgstr "Привет мир!"
+
+#: mysite/settings.py:132
+msgid "English"
+msgstr "Английский"
+
+#: mysite/settings.py:133
+msgid "Russian"
+msgstr "Русский"
+
+#: shopapp/templates/shopapp/products-list.html:6
+msgid "Products list"
+msgstr "Список товаров"
+
+#: shopapp/templates/shopapp/products-list.html:11
+msgid "Products"
+msgstr "Товары"
+
+#: shopapp/templates/shopapp/products-list.html:14
+#, python-format
+msgid ""
+"\n"
+"            There is only one product.\n"
+"            "
+msgid_plural ""
+"\n"
+"            There are %(products_count)s products.\n"
+"        "
+msgstr[0] ""
+"\n"
+"            Доступен %(products_count)s товар.\n"
+"        "
+msgstr[1] ""
+"\n"
+"            Доступно %(products_count)s товара.\n"
+"        "
+msgstr[2] ""
+"\n"
+"            Доступно %(products_count)s товаров.\n"
+"        "
+
+#: shopapp/templates/shopapp/products-list.html:27
+#: shopapp/templates/shopapp/products-list.html:29
+msgctxt "product name"
+msgid "Name"
+msgstr "Название"
+
+#: shopapp/templates/shopapp/products-list.html:32
+msgid "Price"
+msgstr "Цена"
+
+#: shopapp/templates/shopapp/products-list.html:33
+msgid "no discount"
+msgstr "нет скидки"
+
+#: shopapp/templates/shopapp/products-list.html:34
+msgid "Discount"
+msgstr "Скидка"
+
+#: shopapp/templates/shopapp/products-list.html:45
+msgid "Create product"
+msgstr "Создать товар"
+
+#: shopapp/templates/shopapp/products-list.html:51
+#, python-format
+msgid ""
+"\n"
+"            <h3>No products yet</h3>\n"
+"            <a href=\"%(create_product_url)s\">Create a new one</a>\n"
+"        "
+msgstr ""
+"\n"
+"            <h3>Нет продуктов</h3>\n"
+"            <a href=\"%(create_product_url)s\">Создать новый</a>\n"
+"        "
+
+#~ msgid "No products yet"
+#~ msgstr "Пока нет товаров"
