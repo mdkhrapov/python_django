@@ -8,9 +8,26 @@ from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
 from django.views.generic import TemplateView, CreateView
+from django.utils.translation import gettext as _, ngettext
 from .forms import ProfileEditForm
 from .models import Profile
 
+
+class HelloView(View):
+    def get(self,request: HttpRequest) -> HttpResponse:
+        items_str = request.GET.get("items") or 0
+        items = int(items_str)
+        products_line = ngettext(
+            "one product",
+            "{count} products",
+             items
+        )
+        products_line = products_line.format(count=items)
+        welcome_message = _("welcome hello world")
+        return HttpResponse(
+            f"<h1>{welcome_message}</h1>"
+            f"\n<h2>{products_line}</h2>"
+        )
 
 class AboutMeView(TemplateView):
     template_name = "myauth/about-me.html"

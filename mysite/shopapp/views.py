@@ -22,6 +22,7 @@ class ShopIndexView(View):
         context = {
             "time_running": default_timer(),
             "products": products,
+            "items": 2,
             }
         return render(request, 'shopapp/shop-index.html', context=context)
 
@@ -88,7 +89,7 @@ class ProductUpdateView(UserPassesTestMixin, PermissionRequiredMixin, UpdateView
         )
 
     def form_valid(self, form):
-        response = super().form_valid()
+        response = super().form_valid(form)
         for image in form.files.getlist("images"):
             ProductImage.objects.create(
                 product=self.object,

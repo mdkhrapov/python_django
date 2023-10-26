@@ -17,12 +17,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('shop/', include('shopapp.urls')),
+    # path('admin/', admin.site.urls),
+    # path('shop/', include('shopapp.urls')),
     path('myauth/', include('myauth.urls')),
 ]
+
+urlpatterns += i18n_patterns(
+    path('admin/', admin.site.urls),
+    path('shop/', include('shopapp.urls')),
+)
 
 if settings.DEBUG:
     urlpatterns.extend(
