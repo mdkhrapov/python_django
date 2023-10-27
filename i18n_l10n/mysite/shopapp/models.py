@@ -14,7 +14,7 @@ class Product(models.Model):
     class Meta:
         ordering = ["name", "price"]
         verbose_name = _("Product")
-        verbose_name_plural = "products"
+        verbose_name_plural = _("products")
 
     name = models.CharField(max_length=100)
     description = models.TextField(null=False, blank=True)
