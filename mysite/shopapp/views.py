@@ -5,10 +5,38 @@ from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, JsonRes
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.filters import SearchFilter, OrderingFilter
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Product, Order, ProductImage
 from .forms import GroupForm
 from .forms import ProductForm
 from django.views import View
+from .serializers import ProductSerializer
+
+
+class ProductViewSet(ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    filter_backends = [
+        SearchFilter,
+        DjangoFilterBackend,
+        OrderingFilter,
+    ]
+    search_fields = ["name", "description"]
+    filterset_fields = [
+        "name",
+        "description",
+        "price",
+        "discount",
+        "archived"
+    ]
+    ordering_fields = [
+        "pk",
+        "name",
+        "price",
+        "discount",
+    ]
 
 class ShopIndexView(View):
     def get(self, request: HttpRequest) -> HttpResponse:
