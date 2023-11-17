@@ -17,16 +17,16 @@ class Product(models.Model):
         # verbose_name = _("Product")
         # verbose_name_plural = "products"
 
-    name = models.CharField(max_length=100)
-    description = models.TextField(null=False, blank=True)
+    name = models.CharField(max_length=100, db_index=True)
+    description = models.TextField(null=False, blank=True, db_index=True)
     price = models.DecimalField(default=0, max_digits=8, decimal_places=2)
     discount = models.SmallIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
-    created_by = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True
-    )
+    # created_by = models.ForeignKey(
+    #     User,
+    #     on_delete=models.SET_NULL,
+    #     null=True
+    # )
     archived = models.BooleanField(default=False)
     preview = models.ImageField(null=True, blank=True, upload_to=product_preview_directory_path)
 
