@@ -11,7 +11,7 @@
             <div>
                 <p>Article ID {{article.pk}}</p>
                 <p>Title: {{ article.title }}</p>
-                <p>Pub date: {{ article.pub_date|date }}</p>
+                <p>Pub date: {{ article.pub_date|date:"d m Y" }}</p>
                 <p>Author: {{ article.author.name }}</p>
                 <p>Category: {{ article.category.name }}</p>
                 <div>

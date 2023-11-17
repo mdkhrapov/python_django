@@ -17,7 +17,7 @@ class Tag(models.Model):
 class Article(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField(null=False, blank=True)
-    pub_date = models.DateTimeField(auto_now_add=True)
+    pub_date = models.DateTimeField()
     author= models.ForeignKey(Author, on_delete=models.CASCADE, related_name="author")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="category")
     tags = models.ManyToManyField(Tag, related_name="tag")
