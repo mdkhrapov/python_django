@@ -1,0 +1,209 @@
+2023-11-21 11:00:10,779 [DEBUG] shopapp.views: Products for shop index [('laptop', 1999), ('desktop', 2999), ('smartphone', 999), ('monitor', 1200), ('printer', 1500)]
+2023-11-21 11:00:10,779 [INFO] shopapp.views: Rendering shop index
+2023-11-21 11:02:23,666 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/mysite/mysite/settings.py changed, reloading.
+2023-11-21 11:02:23,953 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-11-21 11:02:27,142 [DEBUG] shopapp.views: Products for shop index [('laptop', 1999), ('desktop', 2999), ('smartphone', 999), ('monitor', 1200), ('printer', 1500)]
+2023-11-21 11:02:27,142 [INFO] shopapp.views: Rendering shop index
+2023-11-21 11:02:27,612 [DEBUG] shopapp.views: Products for shop index [('laptop', 1999), ('desktop', 2999), ('smartphone', 999), ('monitor', 1200), ('printer', 1500)]
+2023-11-21 11:02:27,613 [INFO] shopapp.views: Rendering shop index
+2023-11-21 11:02:27,808 [DEBUG] shopapp.views: Products for shop index [('laptop', 1999), ('desktop', 2999), ('smartphone', 999), ('monitor', 1200), ('printer', 1500)]
+2023-11-21 11:02:27,808 [INFO] shopapp.views: Rendering shop index
+2023-11-21 11:02:28,003 [DEBUG] shopapp.views: Products for shop index [('laptop', 1999), ('desktop', 2999), ('smartphone', 999), ('monitor', 1200), ('printer', 1500)]
+2023-11-21 11:02:28,003 [INFO] shopapp.views: Rendering shop index
+2023-11-21 11:02:28,166 [DEBUG] shopapp.views: Products for shop index [('laptop', 1999), ('desktop', 2999), ('smartphone', 999), ('monitor', 1200), ('printer', 1500)]
+2023-11-21 11:02:28,166 [INFO] shopapp.views: Rendering shop index
+2023-11-21 11:39:10,410 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/mysite/mysite/settings.py changed, reloading.
+2023-11-21 11:39:10,830 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-11-21 13:04:23,812 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-11-21 13:04:28,929 [WARNING] django.request: Not Found: /favicon.ico
+2023-11-21 13:04:30,206 [DEBUG] shopapp.views: Products for shop index [('laptop', 1999), ('desktop', 2999), ('smartphone', 999), ('monitor', 1200), ('printer', 1500)]
+2023-11-21 13:04:30,207 [INFO] shopapp.views: Rendering shop index
+2023-11-21 13:13:11,577 [DEBUG] shopapp.views: Products for shop index [('laptop', 1999), ('desktop', 2999), ('smartphone', 999), ('monitor', 1200), ('printer', 1500)]
+2023-11-21 13:13:11,577 [INFO] shopapp.views: Rendering shop index
+2023-11-23 12:22:44,868 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-11-23 12:22:47,431 [DEBUG] shopapp.views: Products for shop index [('laptop', 1999), ('desktop', 2999), ('smartphone', 999), ('monitor', 1200), ('printer', 1500)]
+2023-11-23 12:22:47,431 [INFO] shopapp.views: Rendering shop index
+2023-11-23 12:22:51,162 [WARNING] django.request: Not Found: /ru/shop/export
+2023-11-23 12:23:22,750 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-11-23 12:23:23,089 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-11-23 12:23:30,841 [ERROR] django.request: Internal Server Error: /ru/shop/products/export/
+Traceback (most recent call last):
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/mysite/shopapp/views.py", line 243, in get
+    name = elem["naem"]
+           ~~~~^^^^^^^^
+KeyError: 'naem'
+2023-11-23 13:04:45,834 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-11-23 13:04:50,882 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): o4506275277701120.ingest.sentry.io:443
+2023-11-23 13:04:51,123 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275299196929/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:05:50,969 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275299196929/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:06:05,588 [ERROR] django.request: Internal Server Error: /ru/shop/products/export/
+Traceback (most recent call last):
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/mysite/shopapp/views.py", line 243, in get
+    name = elem["naem"]
+           ~~~~^^^^^^^^
+KeyError: 'naem'
+2023-11-23 13:06:05,677 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275299196929/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:06:05,762 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275299196929/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:06:50,973 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275299196929/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:07:06,345 [ERROR] django.request: Internal Server Error: /ru/shop/products/export/
+Traceback (most recent call last):
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/mysite/shopapp/views.py", line 243, in get
+    name = elem["naem"]
+           ~~~~^^^^^^^^
+KeyError: 'naem'
+2023-11-23 13:07:06,409 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275299196929/envelope/ HTTP/1.1" 403 0
+2023-11-23 13:07:06,493 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275299196929/envelope/ HTTP/1.1" 403 0
+2023-11-23 13:07:42,603 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/mysite/mysite/settings.py changed, reloading.
+2023-11-23 13:07:42,689 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275299196929/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:07:43,088 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-11-23 13:07:48,677 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): o4506275277701120.ingest.sentry.io:443
+2023-11-23 13:07:48,711 [ERROR] django.request: Internal Server Error: /ru/shop/products/export/
+Traceback (most recent call last):
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/mysite/shopapp/views.py", line 243, in get
+    name = elem["naem"]
+           ~~~~^^^^^^^^
+KeyError: 'naem'
+2023-11-23 13:07:48,957 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275299196929/envelope/ HTTP/1.1" 403 0
+2023-11-23 13:07:49,049 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275299196929/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:07:49,557 [ERROR] django.request: Internal Server Error: /ru/shop/products/export/
+Traceback (most recent call last):
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/mysite/shopapp/views.py", line 243, in get
+    name = elem["naem"]
+           ~~~~^^^^^^^^
+KeyError: 'naem'
+2023-11-23 13:07:49,645 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275299196929/envelope/ HTTP/1.1" 403 0
+2023-11-23 13:07:49,731 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275299196929/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:08:48,820 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275299196929/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:16:30,780 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/mysite/mysite/settings.py changed, reloading.
+2023-11-23 13:16:31,202 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-11-23 13:16:54,753 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/mysite/mysite/settings.py changed, reloading.
+2023-11-23 13:16:55,107 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-11-23 13:17:19,695 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/mysite/mysite/settings.py changed, reloading.
+2023-11-23 13:17:22,346 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-11-23 13:17:30,573 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): o4506275277701120.ingest.sentry.io:443
+2023-11-23 13:17:30,819 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:17:31,700 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:17:35,670 [ERROR] django.request: Internal Server Error: /ru/shop/products/export/
+Traceback (most recent call last):
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/mysite/shopapp/views.py", line 243, in get
+    name = elem["naem"]
+           ~~~~^^^^^^^^
+KeyError: 'naem'
+2023-11-23 13:17:35,738 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:17:35,833 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:17:37,462 [ERROR] django.request: Internal Server Error: /ru/shop/products/export/
+Traceback (most recent call last):
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/sentry_sdk/integrations/django/views.py", line 84, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/mysite/shopapp/views.py", line 243, in get
+    name = elem["naem"]
+           ~~~~^^^^^^^^
+KeyError: 'naem'
+2023-11-23 13:17:37,523 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:17:37,604 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:18:30,659 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:19:49,716 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/mysite/shopapp/views.py changed, reloading.
+2023-11-23 13:19:50,117 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-11-23 13:19:58,836 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): o4506275277701120.ingest.sentry.io:443
+2023-11-23 13:19:59,084 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-11-23 13:20:58,918 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0

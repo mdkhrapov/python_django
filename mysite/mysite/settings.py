@@ -13,6 +13,15 @@ import logging
 from pathlib import Path
 
 from django.urls import reverse_lazy
+import sentry_sdk
+
+sentry_sdk.init(
+    # dsn="https://6ac06c13877c03bb2ddeb0c1ae23ad4d@o4506275277701120.ingest.sentry.io/4506275299196929",
+    dsn="https://e0faf3953d507672bf0ffd334101db82@o4506275277701120.ingest.sentry.io/4506275306209280",
+    traces_sample_rate=1.0,
+    profiles_sample_rate=1.0,
+)
+
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,8 +37,22 @@ SECRET_KEY = 'django-insecure-w$42j*jxrc#au1_to=3sgkkc&r@wbad&c01aw#o40(+%f^u7h9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "0.0.0.0",
+    "127.0.0.1",
+]
 
+INTERNAL_IPS = [
+   "127.0.0.1",
+]
+
+# if DEBUG:
+#     import socket
+#     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+#     INTERNAL_IPS.append("10.0.2.2")
+#     INTERNAL_IPS.extend(
+#         [ip[: ip.rfind(".")] + ".1" for ip in ips]
+#     )
 
 # Application definition
 
@@ -41,6 +64,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admindocs',
+    'debug_toolbar',
     'rest_framework',
     'django_filters',
     'drf_spectacular',
@@ -62,6 +86,7 @@ MIDDLEWARE = [
     'requestdataapp.middlewares.CountRequestsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.admindocs.middleware.XViewMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     #'requestdataapp.middlewares.ThrottlingMiddleware',
 ]
 
@@ -170,24 +195,58 @@ SPECTACULAR_SETTINGS ={
 }
 
 
+# LOGGING = {
+#     'version': 1,
+#     'filters': {
+#         'require_debug_true': {
+#             '()': 'django.utils.log.RequireDebugTrue',
+#         },
+#     },
+#     'handlers': {
+#         'console': {
+#             'level': 'DEBUG',
+#             'filters': ['require_debug_true'],
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'django.db.backends': {
+#             'level': 'DEBUG',
+#             'handlers': ['console'],
+#         }
+#     },
+# }
+
+LOGFILE_NAME = BASE_DIR / "log.txt"
+LOGFILE_SIZE = 1024 * 1024
+LOGFILE_COUNT = 1
+
 LOGGING = {
-    'version': 1,
-    'filters': {
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+         "verbose": {
+            "format": "%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+         },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+        "logfile": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": LOGFILE_NAME,
+            "maxBytes": LOGFILE_SIZE,
+            "backupCount": LOGFILE_COUNT,
+            "formatter": "verbose",
         },
     },
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'filters': ['require_debug_true'],
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django.db.backends': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-        }
+    "root": {
+        "handlers": [
+            "console",
+            "logfile",
+        ],
+        "level": "DEBUG",
     },
 }

@@ -3,7 +3,7 @@
 
 Разные view для интернет-магазина: по товарам, заказам и т.д.
 """
-
+import logging
 from timeit import default_timer
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.models import Group
@@ -20,6 +20,8 @@ from .forms import ProductForm
 from django.views import View
 from .serializers import ProductSerializer
 from drf_spectacular.utils import extend_schema, OpenApiResponse
+
+log = logging.getLogger(__name__)
 
 
 @extend_schema(description="Product Views CRUD")
@@ -76,6 +78,8 @@ class ShopIndexView(View):
             "products": products,
             "items": 2,
             }
+        log.debug("Products for shop index %s", products)
+        log.info("Rendering shop index")
         return render(request, 'shopapp/shop-index.html', context=context)
 
 
@@ -235,4 +239,7 @@ class ProductsDataExportView(View):
             }
             for product in products
         ]
+        elem = products_data[0]
+        name = elem["name"]
+        print("name:", name)
         return JsonResponse({"products": products_data})

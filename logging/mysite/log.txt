@@ -1,0 +1,27 @@
+2023-11-23 13:56:46,203 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-11-23 13:56:50,031 [WARNING] django.request: Not Found: /
+2023-11-23 13:56:50,229 [WARNING] django.request: Not Found: /favicon.ico
+2023-11-23 13:56:50,331 [ERROR] django.security.DisallowedHost: Invalid HTTP_HOST header: '0.0.0.0:8000'. You may need to add '0.0.0.0' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '0.0.0.0:8000'. You may need to add '0.0.0.0' to ALLOWED_HOSTS.
+2023-11-23 13:56:50,363 [WARNING] django.request: Bad Request: /favicon.ico
+2023-11-24 09:53:43,686 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-11-24 09:53:49,598 [WARNING] django.request: Not Found: /
+2023-11-24 09:53:50,970 [WARNING] django.request: Not Found: /favicon.ico
+2023-11-24 09:53:50,988 [WARNING] django.request: Not Found: /favicon.ico
+2023-11-24 09:53:51,077 [WARNING] django.request: Not Found: /
+2023-11-24 11:28:18,548 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-11-24 11:29:04,631 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-11-24 11:29:06,951 [WARNING] django.request: Not Found: /
+2023-11-24 11:29:07,006 [WARNING] django.request: Not Found: /favicon.ico

@@ -13,6 +13,14 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 
 from django.urls import reverse_lazy
+import sentry_sdk
+
+sentry_sdk.init(
+    # dsn="https://6ac06c13877c03bb2ddeb0c1ae23ad4d@o4506275277701120.ingest.sentry.io/4506275299196929",
+    dsn="https://e0faf3953d507672bf0ffd334101db82@o4506275277701120.ingest.sentry.io/4506275306209280",
+    traces_sample_rate=1.0,
+    profiles_sample_rate=1.0,
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,8 +35,14 @@ SECRET_KEY = 'django-insecure-hvxn%qq=gyw^4*o2lo1#bw0=wh#ux9s8h!=@c608arf_gz3+^7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "0.0.0.0",
+    "127.0.0.1",
+]
 
+INTERNAL_IPS = [
+   "127.0.0.1",
+]
 
 # Application definition
 
@@ -144,3 +158,37 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = reverse_lazy("myauth:about-me")
 LOGIN_URL = reverse_lazy("myauth:login")
+
+LOGFILE_NAME = BASE_DIR / "log.txt"
+LOGFILE_SIZE = 1024 * 1024
+LOGFILE_COUNT = 1
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+         "verbose": {
+            "format": "%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+         },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+        "logfile": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": LOGFILE_NAME,
+            "maxBytes": LOGFILE_SIZE,
+            "backupCount": LOGFILE_COUNT,
+            "formatter": "verbose",
+        },
+    },
+    "root": {
+        "handlers": [
+            "console",
+            "logfile",
+        ],
+        "level": "DEBUG",
+    },
+}
