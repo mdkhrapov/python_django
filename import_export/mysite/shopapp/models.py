@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import Manager
-
+from django.urls import reverse
 
 def product_preview_directory_path(instance: "Product", filename: str) -> str:
     return "products/product_{pk}/preview/{filename}".format(
@@ -26,6 +26,9 @@ class Product(models.Model):
 
     def __str__(self):
         return f"Product(pk={self.pk}, name={self.name!r})"
+
+    def get_absolute_url(self):
+        return reverse("shopapp:product_details", kwargs={"pk": self.pk})
 
     if TYPE_CHECKING:
         objects: Manager

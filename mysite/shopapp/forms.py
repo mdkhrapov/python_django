@@ -33,6 +33,11 @@ class MultipleFileField(forms.FileField):
             result = single_file_clean(data, initial)
         return result
 
+
+class CSVImportForm(forms.Form):
+    csv_file = forms.FileField()
+
+
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
@@ -40,10 +45,12 @@ class ProductForm(forms.ModelForm):
 
     images = MultipleFileField()
 
+
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = "delivery_address", "promocode", "user", "products"
+
 
 class GroupForm(ModelForm):
     class Meta:

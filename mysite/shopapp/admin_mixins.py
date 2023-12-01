@@ -1,4 +1,4 @@
-import  csv
+import csv
 from django.http import HttpRequest, HttpResponse
 from django.db.models import QuerySet
 from django.db.models.options import Options

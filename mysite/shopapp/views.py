@@ -5,14 +5,19 @@
 """
 import logging
 from timeit import default_timer
+from csv import DictWriter
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.models import Group
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
+from rest_framework.parsers import MultiPartParser
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.request import Request
+from rest_framework.response import Response
+from rest_framework.decorators import action
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Product, Order, ProductImage
 from .forms import GroupForm
@@ -20,11 +25,11 @@ from .forms import ProductForm
 from django.views import View
 from .serializers import ProductSerializer
 from drf_spectacular.utils import extend_schema, OpenApiResponse
+from .common import save_csv_products
 
 log = logging.getLogger(__name__)
 
-
-@extend_schema(description="Product Views CRUD")
+# @extend_schema(description="Product Views CRUD")
 class ProductViewSet(ModelViewSet):
     """
     Набор представлений для действий над Product
@@ -52,17 +57,50 @@ class ProductViewSet(ModelViewSet):
         "discount",
     ]
 
-    @extend_schema(
-        summary="Get one product by ID",
-        description="Retrieves **product**, returns 404 if not found",
-        responses={
-            200: ProductSerializer,
-            404: OpenApiResponse(description="Empty response, product by ID not found"),
-        }
-    )
-    def retrieve(self, *args, **kwargs):
-        return super().retrieve(*args, **kwargs)
+    @action(methods=["get"], detail=False)
+    def download_csv(self, request: Request):
+        response = HttpResponse(content_type="text/csv")
+        filename = "products-export.csv"
+        response["Content-Disposition"] = f"attachment; filename={filename}"
+        queryset = self.filter_queryset(self.get_queryset())
+        fields = [
+            "name",
+            "description",
+            "price",
+            "discount",
+        ]
+        queryset = queryset.only(*fields)
+        writer = DictWriter(response, fieldnames=fields)
+        writer.writeheader()
 
+        for product in queryset:
+            writer.writerow({
+                field: getattr(product, field)
+                for field in fields
+            })
+
+        return response
+
+    @action(methods=["post"], detail=False, parser_classes=[MultiPartParser])
+    def upload_csv(self, request: Request):
+        products = save_csv_products(
+            request.FILES["file"].file,
+            encoding=request.encoding,
+        )
+        serializer = self.get_serializer(products, many=True)
+        return Response(serializer.data)
+
+
+# @extend_schema(
+#     summary="Get one product by ID",
+#     description="Retrieves **product**, returns 404 if not found",
+#     responses={
+#         200: ProductSerializer,
+#         404: OpenApiResponse(description="Empty response, product by ID not found"),
+#     }
+# )
+# def retrieve(self, *args, **kwargs):
+#     return super().retrieve(*args, **kwargs)
 
 class ShopIndexView(View):
     def get(self, request: HttpRequest) -> HttpResponse:
@@ -77,7 +115,7 @@ class ShopIndexView(View):
             "time_running": default_timer(),
             "products": products,
             "items": 2,
-            }
+        }
         log.debug("Products for shop index %s", products)
         log.info("Rendering shop index")
         return render(request, 'shopapp/shop-index.html', context=context)
@@ -97,11 +135,13 @@ class GroupsListView(View):
             form.save()
         return redirect(request.path)
 
+
 class ProductDetailsView(DetailView):
     template_name = 'shopapp/products-detail.html'
     # model = Product
     queryset = Product.objects.prefetch_related("images")
     context_object_name = "product"
+
 
 class ProductsListView(ListView):
     template_name = 'shopapp/products-list.html'
@@ -109,12 +149,15 @@ class ProductsListView(ListView):
     context_object_name = "products"
     queryset = Product.objects.filter(archived=False)
 
-#class ProductCreateView(UserPassesTestMixin, CreateView):
+    # class ProductCreateView(UserPassesTestMixin, CreateView):
+
+
 # class ProductCreateView(PermissionRequiredMixin, CreateView):
 class ProductCreateView(CreateView):
     model = Product
     fields = "name", "price", "description", "discount", "preview"
     success_url = reverse_lazy('shopapp:products_list')
+
     # permission_required = "shopapp.create_product"
 
     # def test_func(self):
@@ -124,6 +167,7 @@ class ProductCreateView(CreateView):
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         return super().form_valid(form)
+
 
 class ProductUpdateView(UserPassesTestMixin, PermissionRequiredMixin, UpdateView):
     model = Product
@@ -141,7 +185,7 @@ class ProductUpdateView(UserPassesTestMixin, PermissionRequiredMixin, UpdateView
     def get_success_url(self):
         return reverse(
             "shopapp:product_details",
-            kwargs={"pk":self.object.pk}
+            kwargs={"pk": self.object.pk}
         )
 
     def form_valid(self, form):
@@ -153,6 +197,7 @@ class ProductUpdateView(UserPassesTestMixin, PermissionRequiredMixin, UpdateView
             )
         return response
 
+
 class ProductDeleteView(DeleteView):
     model = Product
     success_url = reverse_lazy('shopapp:products_list')
@@ -163,6 +208,7 @@ class ProductDeleteView(DeleteView):
         self.object.save()
         return HttpResponseRedirect(success_url)
 
+
 class OrdersListView(LoginRequiredMixin, ListView):
     # permission_required = "view_order"
     queryset = (
@@ -170,6 +216,7 @@ class OrdersListView(LoginRequiredMixin, ListView):
         .select_related("user")
         .prefetch_related("products")
     )
+
 
 class OrdersDetailView(PermissionRequiredMixin, DetailView):
     permission_required = "shopapp.view_order"
@@ -179,10 +226,12 @@ class OrdersDetailView(PermissionRequiredMixin, DetailView):
         .prefetch_related("products")
     )
 
+
 class OrderCreateView(CreateView):
     model = Order
     fields = "delivery_address", "promocode", "user", "products"
     success_url = reverse_lazy('shopapp:orders_list')
+
 
 class OrderUpdateView(UpdateView):
     model = Order
@@ -194,6 +243,7 @@ class OrderUpdateView(UpdateView):
             "shopapp:order_details",
             kwargs={"pk": self.object.pk}
         )
+
 
 class OrderDeleteView(DeleteView):
     model = Order
@@ -228,7 +278,6 @@ class OrderDataExportView(UserPassesTestMixin, View):
 class ProductsDataExportView(View):
 
     def get(self, request: HttpRequest) -> JsonResponse:
-
         products = Product.objects.order_by("pk").all()
         products_data = [
             {
