@@ -2,11 +2,15 @@ from csv import DictWriter
 from timeit import default_timer
 
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.models import User
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+from django.core.cache import cache
 from rest_framework.parsers import MultiPartParser
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -18,7 +22,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .common import save_csv_products
 from .forms import ProductForm
 from .models import Product, Order, ProductImage
-from .serializers import ProductSerializer
+from .serializers import ProductSerializer, OrderSerializer
 
 
 class ProductViewSet(ModelViewSet):
@@ -163,6 +167,41 @@ class OrderDetailView(PermissionRequiredMixin, DetailView):
         .select_related("user")
         .prefetch_related("products")
     )
+
+
+class UserOrdersListView(LoginRequiredMixin, ListView):
+    model = Order
+    template_name = "shopapp/user-orders.html"
+
+    def get_queryset(self, **kwargs):
+        self.owner = self.kwargs.get("user_id")
+        return Order.objects.filter(user=self.owner)
+
+    def get_context_data(self, **kwargs):
+        try:
+            context = super().get_context_data(**kwargs)
+            context["user"] = User.objects.get(pk=self.owner)
+            return context
+        except:
+            context.clear()
+            return context
+
+
+class UserOrdersDataExportView(View):
+    def get(self, request: HttpRequest, user_id:int) -> JsonResponse:
+        cache_key = f"orders_data_export_{user_id}"
+        orders_data = cache.get(cache_key)
+        if orders_data is None:
+            owner: User = get_object_or_404(User, pk=user_id)
+            orders = (Order.objects
+                      .select_related("user")
+                      .prefetch_related("products")
+                      .order_by("pk")
+                      .filter(user=owner)
+                      .all())
+            orders_data = OrderSerializer(orders, many=True).data
+        cache.set(cache_key, orders_data, 300)
+        return JsonResponse({"orders": orders_data})
 
 
 class ProductsDataExportView(View):

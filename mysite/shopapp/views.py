@@ -10,6 +10,9 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.models import Group
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, JsonResponse
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+from django.core.cache import cache
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from rest_framework.parsers import MultiPartParser
@@ -57,6 +60,11 @@ class ProductViewSet(ModelViewSet):
         "discount",
     ]
 
+    @method_decorator(cache_page(60*2))
+    def list(self, *args, **kwargs):
+        # print("hello products list")
+        return super().list(*args, **kwargs)
+
     @action(methods=["get"], detail=False)
     def download_csv(self, request: Request):
         response = HttpResponse(content_type="text/csv")
@@ -103,6 +111,7 @@ class ProductViewSet(ModelViewSet):
 #     return super().retrieve(*args, **kwargs)
 
 class ShopIndexView(View):
+    # @method_decorator(cache_page(60 * 2))
     def get(self, request: HttpRequest) -> HttpResponse:
         products = [
             ('laptop', 1999),
@@ -118,6 +127,7 @@ class ShopIndexView(View):
         }
         log.debug("Products for shop index %s", products)
         log.info("Rendering shop index")
+        print("shop index context", context)
         return render(request, 'shopapp/shop-index.html', context=context)
 
 
@@ -278,17 +288,21 @@ class OrderDataExportView(UserPassesTestMixin, View):
 class ProductsDataExportView(View):
 
     def get(self, request: HttpRequest) -> JsonResponse:
-        products = Product.objects.order_by("pk").all()
-        products_data = [
-            {
-                "pk": product.pk,
-                "name": product.name,
-                "price": product.price,
-                "archived": product.archived,
-            }
-            for product in products
-        ]
-        elem = products_data[0]
-        name = elem["name"]
-        print("name:", name)
+        cache_key = "products_data_export"
+        products_data = cache.get(cache_key)
+        if products_data is None:
+            products = Product.objects.order_by("pk").all()
+            products_data = [
+                {
+                    "pk": product.pk,
+                    "name": product.name,
+                    "price": product.price,
+                    "archived": product.archived,
+                }
+                for product in products
+            ]
+        # elem = products_data[0]
+        # name = elem["name"]
+        # print("name:", name)
+        cache.set(cache_key, products_data, 300)
         return JsonResponse({"products": products_data})

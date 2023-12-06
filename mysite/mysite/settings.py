@@ -27,7 +27,6 @@ from django.utils.translation import gettext_lazy as _
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -43,7 +42,7 @@ ALLOWED_HOSTS = [
 ]
 
 INTERNAL_IPS = [
-   "127.0.0.1",
+    "127.0.0.1",
 ]
 
 # if DEBUG:
@@ -77,6 +76,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -89,7 +89,8 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.admindocs.middleware.XViewMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    #'requestdataapp.middlewares.ThrottlingMiddleware',
+    # 'requestdataapp.middlewares.ThrottlingMiddleware',
+    # 'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -112,7 +113,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -123,6 +123,15 @@ DATABASES = {
     }
 }
 
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.dummy.DummyCache",
+        # "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        # "LOCATION": "/var/tmp/django_cache",
+    },
+}
+
+CACHE_MIDDLEWARE_SECONDS = 200
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -141,7 +150,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -164,7 +172,6 @@ LANGUAGES = [
     ('en', _('English')),
     ('ru', _('Russian')),
 ]
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -189,13 +196,12 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
-SPECTACULAR_SETTINGS ={
+SPECTACULAR_SETTINGS = {
     'TITLE': 'My Site Project API',
     'DESCRIPTION': 'My site with shop app and custom auth',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
-
 
 # LOGGING = {
 #     'version': 1,
@@ -227,9 +233,9 @@ LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "formatters": {
-         "verbose": {
+        "verbose": {
             "format": "%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-         },
+        },
     },
     "handlers": {
         "console": {

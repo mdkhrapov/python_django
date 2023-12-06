@@ -1,7 +1,8 @@
 {% extends 'shopapp/base.html' %}
+{% load cache %}
 
 {% block title %}
-    Shop index
+Shop index
 {% endblock %}
 
 {% comment "Simply comment" %}
@@ -9,29 +10,32 @@
 {% endcomment %}
 
 {% block body %}
-    <h1>Hello Shop Index</h1>
-    <div>
-        <ul>
-            {% for name, price in products %}
-                <li>{{name|capfirst}} for ${{price}}</li>
-                {% if name|length_is:'7' %}
-                    <font color="lightblue">lucky product</font>
-                {% endif %}
-                {% if price >= 1500 %}
-                    <font color="red">expensive product (>=1500)!</font>
-                {% endif %}
-                {% empty %}
-                    No products here
-            {% endfor %}
-        </ul>
-    </div>
+<h1>Hello Shop Index</h1>
+<div>
+    <ul>
+        {% for name, price in products %}
+        <li>{{name|capfirst}} for ${{price}}</li>
+        {% if name|length_is:'7' %}
+        <font color="lightblue">lucky product</font>
+        {% endif %}
+        {% if price >= 1500 %}
+        <font color="red">expensive product (>=1500)!</font>
+        {% endif %}
+        {% empty %}
+        No products here
+        {% endfor %}
+    </ul>
+</div>
 
-    <div>
-        <strong>
-            You have {{ items }} cherr{{ items|pluralize:"y,ies" }}
-        </strong>
-    </div>
+<div>
+    <strong>
+        You have {{ items }} cherr{{ items|pluralize:"y,ies" }}
+    </strong>
+</div>
 
-    <div>Time running: {{time_running}} </div>
-    <div> {% lorem 5 p %} </div>
+<div>Time running: {{time_running}}</div>
+{% cache 100 lorem %}
+<div> {% lorem 5 p %}</div>
+{% endcache %}
+
 {% endblock %}
