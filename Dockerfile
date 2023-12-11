@@ -2,13 +2,13 @@ FROM python:3.11
 
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR /app_log
+WORKDIR /app
 
-COPY logging/requirements.txt requirements.txt
+COPY mysite/requirements.txt requirements.txt
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-COPY logging/mysite/ .
+COPY mysite .
 
-CMD ["python", "manage.py", "runserver"]
+CMD ["gunicorn", "misite.wsgi:application", "--bind", "0.0.0.0:8000"]
