@@ -1045,3 +1045,85 @@ django.template.exceptions.TemplateDoesNotExist: sitemap.xml
 2023-12-04 14:22:29,103 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): o4506275277701120.ingest.sentry.io:443
 2023-12-04 14:22:29,337 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
 2023-12-04 14:23:29,187 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-12-13 13:05:34,918 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-12-13 13:05:35,287 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): o4506275277701120.ingest.sentry.io:443
+2023-12-13 13:05:35,529 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-12-13 13:08:15,709 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/mysite/mysite/settings.py changed, reloading.
+2023-12-13 13:08:16,137 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-12-13 13:08:23,196 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-12-13 13:08:27,295 [WARNING] django.request: Not Found: /
+2023-12-13 13:08:27,298 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): o4506275277701120.ingest.sentry.io:443
+2023-12-13 13:08:27,588 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-12-13 13:08:28,107 [WARNING] django.request: Not Found: /static/debug_toolbar/css/toolbar.css
+2023-12-13 13:08:28,113 [WARNING] django.request: Not Found: /static/debug_toolbar/js/toolbar.js
+2023-12-13 13:08:28,136 [WARNING] django.request: Not Found: /static/debug_toolbar/css/print.css
+2023-12-13 13:08:28,194 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-12-13 13:08:28,222 [WARNING] django.request: Not Found: /favicon.ico
+2023-12-13 13:08:28,237 [WARNING] django.request: Not Found: /favicon.ico
+2023-12-13 13:08:28,274 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-12-13 13:08:28,355 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-12-13 13:08:28,436 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-12-13 13:08:28,520 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-12-13 13:08:30,363 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-12-13 13:08:46,596 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-12-13 13:08:50,185 [WARNING] django.request: Not Found: /
+2023-12-13 13:08:50,245 [WARNING] django.request: Not Found: /favicon.ico
+2023-12-13 13:08:50,267 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-12-13 13:08:50,346 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-12-13 13:09:27,435 [DEBUG] urllib3.connectionpool: https://o4506275277701120.ingest.sentry.io:443 "POST /api/4506275306209280/envelope/ HTTP/1.1" 200 0
+2023-12-13 13:11:22,408 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/mysite/mysite/settings.py changed, reloading.
+2023-12-13 13:11:22,735 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-12-13 13:11:25,832 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-12-13 13:11:28,620 [WARNING] django.request: Not Found: /
+2023-12-13 13:11:30,004 [WARNING] django.request: Not Found: /
+2023-12-13 13:11:30,419 [WARNING] django.request: Not Found: /
+2023-12-13 13:13:04,481 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django/db/backends/base/schema.py changed, reloading.
+2023-12-13 13:13:05,256 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-12-13 13:13:06,577 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/venv/lib/python3.11/site-packages/django_filters/rest_framework/filters.py changed, reloading.
+2023-12-13 13:13:07,434 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-12-13 13:17:58,659 [WARNING] django.request: Not Found: /
+2023-12-13 13:18:46,850 [WARNING] django.request: Not Found: /
+2023-12-13 13:18:49,126 [WARNING] django.request: Not Found: /static/admin/css/login.css
+2023-12-13 13:19:37,928 [WARNING] django.request: Not Found: /products
+2023-12-13 13:19:45,141 [WARNING] django.request: Not Found: /media/products/product_8/preview/photo_2023-10-17_19-50-21.jpg
+2023-12-13 13:19:45,144 [WARNING] django.request: Not Found: /media/products/product_2/preview/photo_2023-10-17_19-50-21.jpg
+2023-12-13 13:19:45,145 [WARNING] django.request: Not Found: /media/products/product_4/preview/photo_2023-10-17_19-50-21.jpg
+2023-12-13 13:20:35,615 [WARNING] django.request: Not Found: /
+2023-12-13 13:20:41,633 [WARNING] django.request: Not Found: /shop/users/1/orders/
+2023-12-13 13:20:45,270 [DEBUG] shopapp.views: Products for shop index [('laptop', 1999), ('desktop', 2999), ('smartphone', 999), ('monitor', 1200), ('printer', 1500)]
+2023-12-13 13:20:45,271 [INFO] shopapp.views: Rendering shop index
+2023-12-13 13:21:56,154 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/mysite/mysite/settings.py changed, reloading.
+2023-12-13 13:21:56,470 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-12-13 13:29:38,405 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-12-13 13:29:43,029 [WARNING] django.request: Not Found: /shop/users/1/orders/
+2023-12-13 13:29:46,147 [WARNING] django.request: Not Found: /
+2023-12-13 13:29:49,154 [WARNING] django.request: Not Found: /shop/users/1/orders/
+2023-12-13 13:29:51,271 [DEBUG] shopapp.views: Products for shop index [('laptop', 1999), ('desktop', 2999), ('smartphone', 999), ('monitor', 1200), ('printer', 1500)]
+2023-12-13 13:29:51,271 [INFO] shopapp.views: Rendering shop index
+2023-12-13 13:30:09,232 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/mysite/mysite/settings.py changed, reloading.
+2023-12-13 13:30:09,629 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-12-13 13:30:19,163 [WARNING] django.request: Not Found: /
+2023-12-13 13:30:19,705 [WARNING] django.request: Not Found: /
+2023-12-13 13:30:19,986 [WARNING] django.request: Not Found: /
+2023-12-13 13:31:04,726 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/mysite/mysite/settings.py changed, reloading.
+2023-12-13 13:31:25,433 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-12-13 13:31:28,550 [WARNING] django.request: Not Found: /
+2023-12-13 13:31:29,175 [WARNING] django.request: Not Found: /
+2023-12-13 13:31:32,422 [WARNING] django.request: Not Found: /
+2023-12-13 13:31:34,655 [WARNING] django.request: Not Found: /static/admin/css/dashboard.css
+2023-12-13 13:31:34,664 [WARNING] django.request: Not Found: /static/admin/img/icon-changelink.svg
+2023-12-13 13:31:34,669 [WARNING] django.request: Not Found: /static/admin/img/icon-deletelink.svg
+2023-12-13 13:31:36,263 [WARNING] django.request: Not Found: /ashop
+2023-12-13 13:31:39,444 [WARNING] django.request: Not Found: /
+2023-12-13 13:31:39,555 [WARNING] django.request: Not Found: /shop/users/1/orders/
+2023-12-13 13:31:42,078 [DEBUG] shopapp.views: Products for shop index [('laptop', 1999), ('desktop', 2999), ('smartphone', 999), ('monitor', 1200), ('printer', 1500)]
+2023-12-13 13:31:42,078 [INFO] shopapp.views: Rendering shop index
+2023-12-13 13:31:45,166 [WARNING] django.request: Not Found: /
+2023-12-13 13:31:45,338 [WARNING] django.request: Not Found: /static/admin/css/dashboard.css
+2023-12-13 13:31:45,385 [WARNING] django.request: Not Found: /static/admin/img/icon-changelink.svg
+2023-12-13 13:31:45,394 [WARNING] django.request: Not Found: /static/admin/img/icon-deletelink.svg
+2023-12-13 13:31:51,303 [WARNING] django.request: Not Found: /api/
+2023-12-13 13:32:16,586 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/mysite/mysite/settings.py changed, reloading.
+2023-12-13 13:34:15,092 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2023-12-13 13:34:26,532 [WARNING] django.request: Not Found: /
+2023-12-13 13:34:26,834 [WARNING] django.request: Not Found: /

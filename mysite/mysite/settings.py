@@ -15,14 +15,14 @@ from pathlib import Path
 import logging.config
 
 from django.urls import reverse_lazy
-import sentry_sdk
+# import sentry_sdk
 
-sentry_sdk.init(
-    # dsn="https://6ac06c13877c03bb2ddeb0c1ae23ad4d@o4506275277701120.ingest.sentry.io/4506275299196929",
-    dsn="https://e0faf3953d507672bf0ffd334101db82@o4506275277701120.ingest.sentry.io/4506275306209280",
-    traces_sample_rate=1.0,
-    profiles_sample_rate=1.0,
-)
+# sentry_sdk.init(
+#     # dsn="https://6ac06c13877c03bb2ddeb0c1ae23ad4d@o4506275277701120.ingest.sentry.io/4506275299196929",
+#     dsn="https://e0faf3953d507672bf0ffd334101db82@o4506275277701120.ingest.sentry.io/4506275306209280",
+#     traces_sample_rate=1.0,
+#     profiles_sample_rate=1.0,
+# )
 
 from django.utils.translation import gettext_lazy as _
 
@@ -41,7 +41,8 @@ SECRET_KEY = getenv(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = getenv("DJANGO_DEBUG", "0") == "1"
+# DEBUG =  getenv("DJANGO_DEBUG", "0") == "1"
+DEBUG = "1"
 
 ALLOWED_HOSTS = [
     "0.0.0.0",
@@ -126,7 +127,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
+        #'NAME': BASE_DIR / 'db.sqlite3',
         'NAME': DATABASE_DIR / 'db.sqlite3',
     }
 }
