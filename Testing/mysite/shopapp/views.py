@@ -38,7 +38,7 @@ class GroupsListView(View):
             form.save()
         return redirect(request.path)
 
-class OrdersListView(LoginRequiredMixin, ListView):
+class OrdersListView(ListView):
     # permission_required = "view_order"
     queryset = (
         Order.objects
@@ -46,7 +46,7 @@ class OrdersListView(LoginRequiredMixin, ListView):
         .prefetch_related("products")
     )
 
-class OrdersDetailView(PermissionRequiredMixin, DetailView):
+class OrdersDetailView(DetailView):
     permission_required = "shopapp.view_order"
     queryset = (
         Order.objects
@@ -80,19 +80,17 @@ class OrderDeleteView(DeleteView):
         return HttpResponseRedirect(success_url)
 
 
-class OrderDataExportView(UserPassesTestMixin, View):
-    def test_func(self):
-        return self.request.user.is_staff
+class OrderDataExportView(View):
 
     def get(self, request: HttpRequest) -> JsonResponse:
         orders = Order.objects.order_by("pk").all()
         orders_data = [
             {
-                "pk": orders.pk,
+                "pk": order.pk,
                 "delivery_address": order.delivery_address,
                 "promocode": order.promocode,
                 "created_at": order.created_at,
-                "user": order.user,
+                "user": order.user.pk,
                 "products": order.products,
             }
             for order in orders

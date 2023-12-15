@@ -21,10 +21,10 @@ from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 from django.contrib.sitemaps.views import sitemap
-
 from .sitemaps import sitemaps
 
 urlpatterns = [
+    path('', include('start_index.urls')),
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('req/', include('requestdataapp.urls')),

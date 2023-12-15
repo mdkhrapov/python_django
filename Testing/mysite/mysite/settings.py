@@ -39,10 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'shopapp.apps.ShopappConfig',
-    'requestdataapp.apps.RequestdataappConfig',
-    'myauth.apps.MyauthConfig',
 ]
 
 MIDDLEWARE = [
@@ -53,9 +50,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'requestdataapp.middlewares.set_useragent_on_request_middleware',
-    'requestdataapp.middlewares.CountRequestsMiddleware',
-    #'requestdataapp.middlewares.ThrottlingMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -131,5 +125,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = reverse_lazy("myauth:about-me")
-LOGIN_URL = reverse_lazy("myauth:login")
+# LOGIN_REDIRECT_URL = reverse_lazy("myauth:about-me")
+# LOGIN_URL = reverse_lazy("myauth:login")

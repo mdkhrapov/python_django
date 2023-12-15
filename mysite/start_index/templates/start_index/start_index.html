@@ -1,0 +1,56 @@
+{% extends 'start_index/base.html' %}
+
+{% block title %}
+Start index
+{% endblock %}
+
+{% block body %}
+<h1>Index</h1>
+<h2>Content:</h2>
+<div>
+    <ul>
+        <li>Blogapp</li>
+        <ul>
+            <li><a href="{% url 'blogapp:articles' %}">Articles</a></li>
+            <li><a href="{% url 'blogapp:articles-feed' %}">Latest Feed</a></li>
+        </ul>
+        <br>
+        <li>Myapiapp</li>
+        <ul>
+            <li><a href="{% url 'myapiapp:hello' %}">Hello</a></li>
+            <li><a href="{% url 'myapiapp:groups' %}">Groups</a></li>
+        </ul>
+        <br>
+        <li>Myauth</li>
+        <ul>
+            <li><a href="{% url 'myauth:login' %}">Login</a></li>
+            <li><a href="{% url 'myauth:about-me' %}">About Me</a></li>
+            <li><a href="{% url 'myauth:register' %}">Register</a></li>
+            <li><a href="{% url 'myauth:cookie-set' %}">Cookie Set</a></li>
+            <li><a href="{% url 'myauth:cookie-get' %}">Cookie Get</a></li>
+            <li><a href="{% url 'myauth:session-set' %}">Session Set</a></li>
+            <li><a href="{% url 'myauth:session-get' %}">Session Get</a></li>
+            <li><a href="{% url 'myauth:profiles_list' %}">Profiles</a></li>
+        </ul>
+        <br>
+        <li>Requestdataapp</li>
+        <ul>
+            <li><a href="{% url 'requestdataapp:get-view' %}">Get</a></li>
+            <li><a href="{% url 'requestdataapp:user-form' %}">Bio</a></li>
+            <li><a href="{% url 'requestdataapp:file-upload' %}">File upload</a></li>
+        </ul>
+        <br>
+        <li>Shopapp</li>
+        <ul>
+            <li><a href="{% url 'admin:index' %}">Admin</a></li>
+            <li><a href="{% url 'shopapp:index' %}">Shop index</a></li>
+            <li><a href="{% url 'shopapp:groups_list' %}">Groups</a></li>
+            <li><a href="{% url 'shopapp:products_list' %}">Products</a></li>
+            <li><a href="{% url 'shopapp:orders_list' %}">Orders</a></li>
+            <li><a href="{% url 'shopapp:products-export' %}">Export products</a></li>
+        </ul>
+        <br>
+    </ul>
+</div>
+
+{% endblock %}
