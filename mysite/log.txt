@@ -1,4 +1,3 @@
-2023-11-21 11:00:10,779 [DEBUG] shopapp.views: Products for shop index [('laptop', 1999), ('desktop', 2999), ('smartphone', 999), ('monitor', 1200), ('printer', 1500)]
 2023-11-21 11:00:10,779 [INFO] shopapp.views: Rendering shop index
 2023-11-21 11:02:23,666 [INFO] django.utils.autoreload: /home/mike/PycharmProjects/pythonProject/mysite/mysite/settings.py changed, reloading.
 2023-11-21 11:02:23,953 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
